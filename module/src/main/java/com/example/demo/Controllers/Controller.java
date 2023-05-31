@@ -84,7 +84,7 @@ public class Controller {
     }
     @FXML
     protected void PlayLevel2() {
-        Level1Button.getScene().getWindow().hide();
+        Level2Button.getScene().getWindow().hide();
         Stage stage = new Stage();
         stage.setTitle("TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
@@ -93,7 +93,7 @@ public class Controller {
     }
     @FXML
     protected void PlayLevel3() {
-        Level1Button.getScene().getWindow().hide();
+        Level3Button.getScene().getWindow().hide();
         Stage stage = new Stage();
         stage.setTitle("TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
