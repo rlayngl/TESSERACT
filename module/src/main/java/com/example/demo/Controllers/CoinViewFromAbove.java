@@ -7,14 +7,16 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class CoinViewFromAbove extends Pane {
-    public ImageView imageView;
-    public static final int columns = 8;
-    public static int offsetX = 0;
-    public static final int width = 60;
-    public static final int height = 60;
-    public static SpriteAnimationCoin spriteAnimation;
+    final ImageView imageView;
+    final int columns = 8;
+    public int offsetX = 0;
+    final int width = 60;
+    final int height = 60;
+    public SpriteAnimationCoin spriteAnimation;
+    public LevelController levelController;
 
-    public CoinViewFromAbove(ImageView imageView) {
+    public CoinViewFromAbove(LevelController levelController, ImageView imageView) {
+        this.levelController = levelController;
         this.imageView = imageView;
         this.imageView.setViewport(new Rectangle2D(offsetX, 0, width, height));
         spriteAnimation = new SpriteAnimationCoin(

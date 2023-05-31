@@ -10,21 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level4 {
-    public static Pane gameRoot = new Pane();
-    public static Pane appRoot = new Pane();
-    public static Pane extraGameRoot = new Pane();
-    public static ImageView imageViewHero = new ImageView(new Image("Images/Sprites/SpriteHero.png"));
-    public static ImageView imageViewHeroViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteHeroViewFromAbove.png"));
-    public static ImageView imageViewCoin = new ImageView(new Image("Images/Sprites/SpriteCoin.png"));
-    public static ImageView imageViewCoinViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteCoinViewFromAbove.png"));
-    public static List<Obstacle> listOfObstacles = new ArrayList<>();
-    public static List<ObstacleViewFromAbove> listOfObstaclesViewFromAbove = new ArrayList<>();
-    public static List<Integer> list = new ArrayList<>();
-    public static List<Integer> listAbove = new ArrayList<>();
-    public static Integer level = 4;
-    public static ImageView backgroundSkyImage = new ImageView(new Image("Images/Level4/Night.jpg"));
-    public static ImageView backgroundGroundImage = new ImageView(new Image("Images/Level4/GroundAboveForNight.png"));
-    public static void start(Stage stage) {
+    public Pane gameRoot = new Pane();
+    public Pane appRoot = new Pane();
+    public Pane extraGameRoot = new Pane();
+    public ImageView imageViewhero = new ImageView(new Image("Images/Sprites/SpriteHero.png"));
+    public ImageView imageViewheroViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteHeroViewFromAbove.png"));
+    public ImageView imageViewCoin = new ImageView(new Image("Images/Sprites/SpriteCoin.png"));
+    public ImageView imageViewCoinViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteCoinViewFromAbove.png"));
+    public List<Obstacle> listOfObstacles = new ArrayList<>();
+    public List<ObstacleViewFromAbove> listOfObstaclesViewFromAbove = new ArrayList<>();
+    public List<Integer> list = new ArrayList<>();
+    public List<Integer> listAbove = new ArrayList<>();
+    public Integer level = 4;
+    public ImageView backgroundSkyImage = new ImageView(new Image("Images/Level4/Night.jpg"));
+    public ImageView backgroundGroundImage = new ImageView(new Image("Images/Level4/GroundAboveForNight.png"));
+    public LevelController levelController;
+
+    public Level4() {
+    }
+
+    public void start(Stage stage) {
+        levelController = new LevelController(levelController);
         Image wall = new Image("Images/Walls/Wall.jpg");
         Image wallX11H = new Image("Images/Walls/WallX11H.jpg");
         Image wallX3V = new Image("Images/Walls/WallX3V.jpg");
@@ -193,24 +199,24 @@ public class Level4 {
         listOfObstacles.forEach(e -> list.add((int) e.getTranslateX()));
         listOfObstaclesViewFromAbove.forEach(e -> listAbove.add((int) e.getTranslateX()));
 
-        LevelController.hero = new Hero(imageViewHero);
-        LevelController.heroViewFromAbove = new HeroViewFromAbove(imageViewHeroViewFromAbove);
-        LevelController.coin = new Coin(imageViewCoin);
-        LevelController.coinViewFromAbove = new CoinViewFromAbove(imageViewCoinViewFromAbove);
-        LevelController.gameRoot = gameRoot;
-        LevelController.appRoot = appRoot;
-        LevelController.extraGameRoot = extraGameRoot;
-        LevelController.currentLevel = level;
-        LevelController.backgroundGroundImage = backgroundGroundImage;
-        LevelController.backgroundSkyImage = backgroundSkyImage;
-        LevelController.list = list;
-        LevelController.listOfObstacles = listOfObstacles;
-        LevelController.listOfObstaclesViewFromAbove = listOfObstaclesViewFromAbove;
-        LevelController.hero.setTranslateX(10);
-        LevelController.hero.setTranslateY(550);
-        LevelController.heroViewFromAbove.setTranslateX(10);
-        LevelController.heroViewFromAbove.setTranslateY(700);
-        LevelController.start(stage);
+        levelController.hero = new Hero(levelController, imageViewhero);
+        levelController.heroViewFromAbove = new HeroViewFromAbove(levelController, imageViewheroViewFromAbove);
+        levelController.coin = new Coin(levelController, imageViewCoin);
+        levelController.coinViewFromAbove = new CoinViewFromAbove(levelController, imageViewCoinViewFromAbove);
+        levelController.gameRoot = gameRoot;
+        levelController.appRoot = appRoot;
+        levelController.extraGameRoot = extraGameRoot;
+        levelController.currentLevel = level;
+        levelController.backgroundGroundImage = backgroundGroundImage;
+        levelController.backgroundSkyImage = backgroundSkyImage;
+        levelController.list = list;
+        levelController.listOfObstacles = listOfObstacles;
+        levelController.listOfObstaclesViewFromAbove = listOfObstaclesViewFromAbove;
+        levelController.hero.setTranslateX(10);
+        levelController.hero.setTranslateY(550);
+        levelController.heroViewFromAbove.setTranslateX(10);
+        levelController.heroViewFromAbove.setTranslateY(700);
+        levelController.start(stage);
         stage.setFullScreen(true);
     }
 }

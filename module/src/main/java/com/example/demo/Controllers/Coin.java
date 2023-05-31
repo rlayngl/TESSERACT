@@ -8,13 +8,15 @@ import javafx.util.Duration;
 
 public class Coin extends Pane {
     public ImageView imageView;
-    public static final int columns = 6;
-    public static int offsetX = 0;
-    public static final int width = 60;
-    public static final int height = 59;
-    public static SpriteAnimationCoin spriteAnimation;
+    final int columns = 6;
+    public int offsetX = 0;
+    final int width = 60;
+    final int height = 59;
+    public SpriteAnimationCoin spriteAnimation;
+    public LevelController levelController;
 
-    public Coin(ImageView imageView) {
+    public Coin(LevelController levelController, ImageView imageView) {
+        this.levelController = levelController;
         this.imageView = imageView;
         this.imageView.setViewport(new Rectangle2D(offsetX, 0, width, height));
         spriteAnimation = new SpriteAnimationCoin(

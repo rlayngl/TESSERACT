@@ -30,22 +30,29 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LevelController {
-    public static Pane appRoot;
-    public static Pane gameRoot;
-    public static Pane extraGameRoot;
-    public static Hero hero;
-    public static HeroViewFromAbove heroViewFromAbove;
-    public static Coin coin;
-    public static CoinViewFromAbove coinViewFromAbove;
-    public static ImageView backgroundSkyImage;
-    public static ImageView backgroundGroundImage;
-    public static List<Obstacle> listOfObstacles;
-    public static List<ObstacleViewFromAbove> listOfObstaclesViewFromAbove;
-    public static List<Integer> list;
-    public static Integer currentLevel;
-//    public static List<String> listOfLevels = new ArrayList<>();
+    public Pane appRoot;
+    public Pane gameRoot;
+    public Pane extraGameRoot;
+    public ImageView backgroundSkyImage;
+    public ImageView backgroundGroundImage;
+    public List<Obstacle> listOfObstacles;
+    public List<ObstacleViewFromAbove> listOfObstaclesViewFromAbove;
+    public List<Integer> list;
+    public Integer currentLevel;
+    public LevelController levelController;
+    public Level1 level1;
+    public Level2 level2;
+    public Level3 level3;
+    public Level4 level4;
+    public Hero hero;
+    public Coin coin;
+    public HeroViewFromAbove heroViewFromAbove;
+    public CoinViewFromAbove coinViewFromAbove;
+    public LevelController(LevelController levelController) {
+        this.levelController = levelController;
+    }
 
-    public static Parent createContent() {
+    public Parent createContent() {
         backgroundSkyImage.setFitHeight(700);
         backgroundSkyImage.setFitWidth(3000);
         backgroundGroundImage.setFitHeight(865);
@@ -55,29 +62,29 @@ public class LevelController {
         extraGameRoot.setPrefSize(700, 700);
         extraGameRoot.getChildren().addAll(backgroundGroundImage, heroViewFromAbove, coinViewFromAbove);
         extraGameRoot.setVisible(false);
-        ImageView imageViewHero = new ImageView();
-        imageViewHero.setViewport(new Rectangle2D(Hero.offsetX, Hero.offsetY, Hero.WIDTH, Hero.HEIGHT));
-        Animation animationHero = new SpriteAnimationHero(
-                imageViewHero, Duration.millis(500),
-                Hero.count, Hero.columns, Hero.offsetX,
-                Hero.offsetY, Hero.WIDTH, Hero.HEIGHT
+        ImageView imageViewhero = new ImageView();
+        imageViewhero.setViewport(new Rectangle2D(hero.offsetX, hero.offsetY, hero.WIDTH, hero.HEIGHT));
+        Animation animationhero = new SpriteAnimationHero(
+                imageViewhero, Duration.millis(500),
+                hero.count, hero.columns, hero.offsetX,
+                hero.offsetY, hero.WIDTH, hero.HEIGHT
         );
-        animationHero.setCycleCount(Animation.INDEFINITE);
-        animationHero.play();
-        ImageView imageViewHeroAbove = new ImageView();
-        imageViewHeroAbove.setViewport(new Rectangle2D(Hero.offsetX, Hero.offsetY, Hero.WIDTH, Hero.HEIGHT));
-        Animation animationHeroViewFromAbove = new SpriteAnimationHero(
-                imageViewHero, Duration.millis(500),
-                Hero.count, Hero.columns, Hero.offsetX,
-                Hero.offsetY, Hero.WIDTH, Hero.HEIGHT
+        animationhero.setCycleCount(Animation.INDEFINITE);
+        animationhero.play();
+        ImageView imageViewheroAbove = new ImageView();
+        imageViewheroAbove.setViewport(new Rectangle2D(hero.offsetX, hero.offsetY, hero.WIDTH, hero.HEIGHT));
+        Animation animationheroViewFromAbove = new SpriteAnimationHero(
+                imageViewhero, Duration.millis(500),
+                hero.count, hero.columns, hero.offsetX,
+                hero.offsetY, hero.WIDTH, hero.HEIGHT
         );
-        animationHeroViewFromAbove.setCycleCount(Animation.INDEFINITE);
-        animationHeroViewFromAbove.play();
+        animationheroViewFromAbove.setCycleCount(Animation.INDEFINITE);
+        animationheroViewFromAbove.play();
         ImageView imageViewCoin = new ImageView();
-        imageViewCoin.setViewport(new Rectangle2D(Coin.offsetX, 0, Coin.width, Coin.height));
+        imageViewCoin.setViewport(new Rectangle2D(coin.offsetX, 0, coin.width, coin.height));
         Animation animationCoin = new SpriteAnimationCoin(
                 imageViewCoin, Duration.millis(500),
-                Coin.columns, Coin.offsetX, Coin.width, Coin.height
+                coin.columns, coin.offsetX, coin.width, coin.height
         );
         animationCoin.setCycleCount(Animation.INDEFINITE);
         animationCoin.play();
@@ -87,16 +94,16 @@ public class LevelController {
         return appRoot;
     }
 
-    public static boolean canDimensionBeChanged;
-    public static Integer coordinate;
-    public static Integer coordinateXAbove;
-    public static Integer coordinateYAbove;
+    public boolean canDimensionBeChanged;
+    public Integer coordinate;
+    public Integer coordinateXAbove;
+    public Integer coordinateYAbove;
 
-    public static void update() throws IOException {
+    public void update() throws IOException {
         if (!isPaused && !isFinished && !isDimensionChanged && !canPauseBeReleased && !stop) {
             coordinate = (int) hero.getTranslateX();
 
-            Coin.spriteAnimation.play();
+            coin.spriteAnimation.play();
             if (hero.velocity.getY() < 5) {
                 hero.velocity = hero.velocity.add(0, 1);
             }
@@ -106,46 +113,46 @@ public class LevelController {
             canDimensionBeChanged = true;
             listOfObstacles.forEach(e -> {
                 int coordinateXOfObstacles = (int) e.getTranslateX();
-                if (e.width != 3000 && coordinate + Hero.WIDTH >= coordinateXOfObstacles
+                if (e.width != 3000 && coordinate + hero.WIDTH >= coordinateXOfObstacles
                         && coordinate <= coordinateXOfObstacles + e.width) canDimensionBeChanged = false;
             });
 
-            if (isPressed(KeyCode.SPACE)) Hero.jump();
+            if (isPressed(KeyCode.SPACE)) hero.jump();
             if (isPressed(KeyCode.A)) {
                 hero.moveX(-5);
-                Hero.spriteAnimation.setOffsetYHero(141);
-                Hero.spriteAnimation.play();
+                hero.spriteAnimation.setOffsetYhero(141);
+                hero.spriteAnimation.play();
             } else if (isPressed(KeyCode.D)) {
                 hero.moveX(5);
-                Hero.spriteAnimation.setOffsetYHero(212);
-                Hero.spriteAnimation.play();
+                hero.spriteAnimation.setOffsetYhero(212);
+                hero.spriteAnimation.play();
             } else if (isPressed(KeyCode.R) && canDimensionBeChanged) {
-                Hero.spriteAnimation.stop();
-                Coin.spriteAnimation.stop();
+                hero.spriteAnimation.stop();
+                coin.spriteAnimation.stop();
                 changeDimension();
-            } else Hero.spriteAnimation.stop();
+            } else hero.spriteAnimation.stop();
             if (isPressed(KeyCode.P)) {
                 pause();
-                Hero.spriteAnimation.stop();
-                Coin.spriteAnimation.stop();
+                hero.spriteAnimation.stop();
+                coin.spriteAnimation.stop();
             }
             if (coordinate + 58 >= coin.getTranslateX()) {
                 finish();
-                Hero.spriteAnimation.stop();
-                Coin.spriteAnimation.stop();
+                hero.spriteAnimation.stop();
+                coin.spriteAnimation.stop();
             }
         }
         if (!isPaused && !isFinished && isDimensionChanged && !canPauseBeReleased && !stop) {
             coordinateXAbove = (int) heroViewFromAbove.getTranslateX();
             coordinateYAbove = (int) heroViewFromAbove.getTranslateY();
-            CoinViewFromAbove.spriteAnimation.play();
+            coinViewFromAbove.spriteAnimation.play();
             heroViewFromAbove.moveX((int) heroViewFromAbove.velocity.getX());
             heroViewFromAbove.moveY((int) heroViewFromAbove.velocity.getY());
 
             canDimensionBeChanged = true;
             listOfObstaclesViewFromAbove.forEach(e -> {
                 int coordinateXOfObstacleAbove = (int) e.getTranslateX();
-                if (coordinateXAbove + Hero.WIDTH >= coordinateXOfObstacleAbove
+                if (coordinateXAbove + hero.WIDTH >= coordinateXOfObstacleAbove
                         && coordinateXAbove <= coordinateXOfObstacleAbove + e.width) {
                     canDimensionBeChanged = false;
                 }
@@ -153,35 +160,35 @@ public class LevelController {
 
             if (isPressed(KeyCode.A)) {
                 heroViewFromAbove.moveX(-5);
-                HeroViewFromAbove.spriteAnimation.setOffsetYHeroViewFromAbove(141);
-                HeroViewFromAbove.spriteAnimation.play();
+                heroViewFromAbove.spriteAnimation.setOffsetYheroViewFromAbove(141);
+                heroViewFromAbove.spriteAnimation.play();
             } else if (isPressed(KeyCode.D)) {
                 heroViewFromAbove.moveX(5);
-                HeroViewFromAbove.spriteAnimation.setOffsetYHeroViewFromAbove(212);
-                HeroViewFromAbove.spriteAnimation.play();
+                heroViewFromAbove.spriteAnimation.setOffsetYheroViewFromAbove(212);
+                heroViewFromAbove.spriteAnimation.play();
             } else if (isPressed(KeyCode.W)) {
                 heroViewFromAbove.moveY(-5);
-                HeroViewFromAbove.spriteAnimation.setOffsetYHeroViewFromAbove(71);
-                HeroViewFromAbove.spriteAnimation.play();
+                heroViewFromAbove.spriteAnimation.setOffsetYheroViewFromAbove(71);
+                heroViewFromAbove.spriteAnimation.play();
             } else if (isPressed(KeyCode.S)) {
                 heroViewFromAbove.moveY(5);
-                HeroViewFromAbove.spriteAnimation.setOffsetYHeroViewFromAbove(0);
-                HeroViewFromAbove.spriteAnimation.play();
+                heroViewFromAbove.spriteAnimation.setOffsetYheroViewFromAbove(0);
+                heroViewFromAbove.spriteAnimation.play();
             } else if (isPressed(KeyCode.R) && canDimensionBeChanged) {
-                HeroViewFromAbove.spriteAnimation.stop();
-                Coin.spriteAnimation.stop();
+                heroViewFromAbove.spriteAnimation.stop();
+                coin.spriteAnimation.stop();
                 changeDimensionBack();
-            } else HeroViewFromAbove.spriteAnimation.stop();
+            } else heroViewFromAbove.spriteAnimation.stop();
             if (isPressed(KeyCode.P)) {
                 pause();
-                HeroViewFromAbove.spriteAnimation.stop();
-                Coin.spriteAnimation.stop();
+                heroViewFromAbove.spriteAnimation.stop();
+                coin.spriteAnimation.stop();
             }
             if (coordinateXAbove >= coinViewFromAbove.getTranslateX() - 30 &&
                     heroViewFromAbove.getTranslateY() >= coinViewFromAbove.getTranslateY() - 30) {
                 finish();
-                HeroViewFromAbove.spriteAnimation.stop();
-                CoinViewFromAbove.spriteAnimation.stop();
+                heroViewFromAbove.spriteAnimation.stop();
+                coinViewFromAbove.spriteAnimation.stop();
             }
         }
         if (isPaused && canPauseBeReleased) {
@@ -216,13 +223,13 @@ public class LevelController {
         }
     }
 
-    public static HashMap<KeyCode, Boolean> map = new HashMap<>();
+    public HashMap<KeyCode, Boolean> map = new HashMap<>();
 
-    public static boolean isPressed(KeyCode key) {
+    public boolean isPressed(KeyCode key) {
         return map.getOrDefault(key, false);
     }
-    public static AnimationTimer timer;
-    public static void start(Stage primaryStage) {
+    public AnimationTimer timer;
+    public void start(Stage primaryStage) {
         Scene scene = new Scene(createContent());
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -242,14 +249,14 @@ public class LevelController {
         if (currentLevel == 0) beginning();
     }
 
-    public static Rectangle blackScreen = new Rectangle(3000, 1000, Color.BLACK);
-    public static Rectangle darkMode = new Rectangle(3000, 1000, Color.BLACK);
-    public static boolean isPaused = false;
-    public static boolean canPauseBeReleased = false;
-    public static boolean isFinished = false;
-    public static VBox vBox;
+    public Rectangle blackScreen = new Rectangle(3000, 1000, Color.BLACK);
+    public Rectangle darkMode = new Rectangle(3000, 1000, Color.BLACK);
+    public boolean isPaused = false;
+    public boolean canPauseBeReleased = false;
+    public boolean isFinished = false;
+    public VBox vBox;
 
-    public static void pause() {
+    public void pause() {
         isPaused = true;
         canPauseBeReleased = false;
         darkMode.setOpacity(0.0);
@@ -320,7 +327,7 @@ public class LevelController {
         });
         fadeTransition.play();
     }
-    public static void finish() {
+    public void finish() {
         isFinished = true;
         timer.stop();
         Button buttonNextLevel = createButton("NEXT LEVEL");
@@ -361,15 +368,27 @@ public class LevelController {
         });
         buttonNextLevel.setOnAction(e -> {
             Stage stage = newStage();
-            if (currentLevel == 0) Level1.start(stage);
-            else if (currentLevel == 1) Level2.start(stage);
-            else if (currentLevel == 2) Level3.start(stage);
-            else if (currentLevel == 3) Level4.start(stage);
+            if (currentLevel == 0) {
+                level1 = new Level1();
+                level1.start(stage);
+            }
+            else if (currentLevel == 1) {
+                level2 = new Level2();
+                level2.start(stage);
+            }
+            else if (currentLevel == 2) {
+                level3 = new Level3();
+                level3.start(stage);
+            }
+            else if (currentLevel == 3) {
+                level4 = new Level4();
+                level4.start(stage);
+            }
             isFinished = false;
         });
     }
 
-    public static Button createButton(String text) {
+    public Button createButton(String text) {
         Button button = new Button(text);
         button.setPrefWidth(300);
         button.setPrefHeight(100);
@@ -381,10 +400,10 @@ public class LevelController {
         return button;
     }
 
-    public static boolean isDimensionChanged = false;
-    public static boolean stop = false;
+    public boolean isDimensionChanged = false;
+    public boolean stop = false;
 
-    public static void changeDimension() {
+    public void changeDimension() {
         stop = true;
         darkMode.setOpacity(0);
         gameRoot.getChildren().remove(darkMode);
@@ -402,7 +421,7 @@ public class LevelController {
         fadeTransition.play();
     }
 
-    public static void changeDimensionBack() {
+    public void changeDimensionBack() {
         stop = true;
         darkMode.setOpacity(0);
         extraGameRoot.getChildren().remove(darkMode);
@@ -420,7 +439,7 @@ public class LevelController {
         fadeTransition.play();
     }
 
-    public static Stage newStage() {
+    public Stage newStage() {
         timer.stop();
         gameRoot.getChildren().clear();
         extraGameRoot.getChildren().clear();
@@ -436,7 +455,7 @@ public class LevelController {
         appRoot.getChildren().clear();
         return stage;
     }
-    public static void beginning() {
+    public void beginning() {
         timer.stop();
         isPaused = true;
         darkMode.setOpacity(0.0);
@@ -481,24 +500,4 @@ public class LevelController {
         });
         fadeTransition.play();
     }
-
-
-//    public static void levelCompleted(List<String> listYesNo, int number, String replacement) throws IOException {
-//        BufferedReader reader = new BufferedReader(new FileReader("completedLevels.txt"));
-//        String line;
-//        while ((line = reader.readLine()) != null) {
-//            listYesNo.add(line);
-//        }
-//        listYesNo.set(number, replacement);
-//        BufferedWriter writer = new BufferedWriter(new FileWriter("completedLevels.txt"));
-//        int count = 0;
-//        for (String element : listYesNo) {
-//            writer.write(element);
-//            count++;
-//            if (count != listYesNo.size()) writer.newLine();
-//        }
-//        writer.close();
-//        reader.close();
-//        listOfLevels = listYesNo;
-//    }
 }

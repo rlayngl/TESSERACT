@@ -32,10 +32,10 @@ public class SpriteAnimationHeroViewFromAbove extends Transition {
         this.imageView.setViewport(new Rectangle2D(offsetX, offsetY, width, height));
     }
 
-    public void setOffsetXHeroViewFromAbove(int x) {
+    public void setOffsetXheroViewFromAbove(int x) {
         this.offsetX = x;
     }
-    public void setOffsetYHeroViewFromAbove(int y) {
+    public void setOffsetYheroViewFromAbove(int y) {
         this.offsetY = y;
     }
 

@@ -64,6 +64,11 @@ public class Controller {
     protected void No() {
         QuitPane.setVisible(false);
     }
+    Level0 level0;
+    Level1 level1;
+    Level2 level2;
+    Level3 level3;
+    Level4 level4;
     @FXML
     protected void PlayLevel0() {
         Level0Button.getScene().getWindow().hide();
@@ -71,7 +76,8 @@ public class Controller {
         stage.setTitle("TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
-        Level0.start(stage);
+        level0 = new Level0();
+        level0.start(stage);
     }
     @FXML
     protected void PlayLevel1() {
@@ -80,7 +86,8 @@ public class Controller {
         stage.setTitle("TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
-        Level1.start(stage);
+        level1 = new Level1();
+        level1.start(stage);
     }
     @FXML
     protected void PlayLevel2() {
@@ -89,7 +96,8 @@ public class Controller {
         stage.setTitle("TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
-        Level2.start(stage);
+        level2 = new Level2();
+        level2.start(stage);
     }
     @FXML
     protected void PlayLevel3() {
@@ -98,7 +106,8 @@ public class Controller {
         stage.setTitle("TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
-        Level3.start(stage);
+        level3 = new Level3();
+        level3.start(stage);
     }
     @FXML
     protected void PlayLevel4() {
@@ -108,6 +117,7 @@ public class Controller {
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
         stage.show();
-        Level4.start(stage);
+        level4 = new Level4();
+        level4.start(stage);
     }
 }

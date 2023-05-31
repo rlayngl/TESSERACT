@@ -286,14 +286,14 @@
                 text="This game is called &quot;The Tesseract&quot; after the four-dimensional hypercube, which we cannot see in its full glory, because we only see two-dimensional pictures of the three-dimensional space around us. This phenomenon is taken as the basis of the game. The main character lives in a two-dimensional world, but we, the inhabitants of the three-dimensional world, help him to overcome various obstacles, because we see what the hero does not see. Use your ingenuity and game mechanics to guide your character to the right path. Good luck!"
                 textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
             <font>
-               <Font name="Century Gothic" size="48.0"/>
+               <Font name="Century Gothic" size="46.0"/>
             </font>
          </Label>
          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="194.0" prefWidth="1620.0"
                 text="The Tesseract was created by Alexandr Vyssotskiy. All rights reserved."
                 textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
             <font>
-               <Font name="Century Gothic" size="48.0"/>
+               <Font name="Century Gothic" size="46.0"/>
             </font>
          </Label>
       </VBox>

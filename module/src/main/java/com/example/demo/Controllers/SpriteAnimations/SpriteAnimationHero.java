@@ -33,10 +33,10 @@ public class SpriteAnimationHero extends Transition {
         this.imageView.setViewport(new Rectangle2D(offsetX, offsetY, width, height));
     }
 
-    public void setOffsetXHero(int x) {
+    public void setOffsetXhero(int x) {
         this.offsetX = x;
     }
-    public void setOffsetYHero(int y) {
+    public void setOffsetYhero(int y) {
         this.offsetY = y;
     }
 
