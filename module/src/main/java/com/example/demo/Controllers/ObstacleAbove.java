@@ -5,12 +5,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
-public class ObstacleViewFromAbove extends Pane {
+public class ObstacleAbove extends Pane {
     Rectangle rectangle;
     public int length;
     public int width;
     public Image image;
-    public ObstacleViewFromAbove(int width, int length, Image image) {
+    public ObstacleAbove(int width, int length, Image image) {
         this.width = width;
         this.length = length;
         this.image = image;

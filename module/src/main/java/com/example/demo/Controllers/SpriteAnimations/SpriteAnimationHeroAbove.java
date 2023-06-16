@@ -6,7 +6,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-public class SpriteAnimationHeroViewFromAbove extends Transition {
+public class SpriteAnimationHeroAbove extends Transition {
     public ImageView imageView;
     public int count;
     public int columns;
@@ -15,7 +15,7 @@ public class SpriteAnimationHeroViewFromAbove extends Transition {
     public int width;
     public int height;
 
-    public SpriteAnimationHeroViewFromAbove(
+    public SpriteAnimationHeroAbove(
             ImageView imageView, Duration duration,
             int count, int columns, int offsetX,
             int offsetY, int width, int height) {
@@ -31,11 +31,7 @@ public class SpriteAnimationHeroViewFromAbove extends Transition {
         setInterpolator(Interpolator.LINEAR);
         this.imageView.setViewport(new Rectangle2D(offsetX, offsetY, width, height));
     }
-
-    public void setOffsetXheroViewFromAbove(int x) {
-        this.offsetX = x;
-    }
-    public void setOffsetYheroViewFromAbove(int y) {
+    public void setOffsetYHeroAbove(int y) {
         this.offsetY = y;
     }
 

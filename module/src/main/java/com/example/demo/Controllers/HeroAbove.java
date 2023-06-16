@@ -1,13 +1,13 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.Controllers.SpriteAnimations.SpriteAnimationHeroViewFromAbove;
+import com.example.demo.Controllers.SpriteAnimations.SpriteAnimationHeroAbove;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-public class HeroViewFromAbove extends Pane {
+public class HeroAbove extends Pane {
     public Point2D velocity = new Point2D(0, 0);
     final ImageView imageView;
     final int columns = 4;
@@ -19,14 +19,14 @@ public class HeroViewFromAbove extends Pane {
     final int XMAX = 3000;
     final int YMAX = 700;
     final int MIN = 0;
-    public SpriteAnimationHeroViewFromAbove spriteAnimation;
+    public SpriteAnimationHeroAbove spriteAnimation;
     public LevelController levelController;
 
-    public HeroViewFromAbove(LevelController levelController, ImageView imageView) {
+    public HeroAbove(LevelController levelController, ImageView imageView) {
         this.levelController = levelController;
         this.imageView = imageView;
         this.imageView.setViewport(new Rectangle2D(offsetX, offsetY, WIDTH, HEIGHT));
-        spriteAnimation = new SpriteAnimationHeroViewFromAbove(
+        spriteAnimation = new SpriteAnimationHeroAbove(
                 imageView, Duration.millis(500), count, columns, offsetX, offsetY, WIDTH, HEIGHT);
         getChildren().add(imageView);
         this.setTranslateX(10);
@@ -36,7 +36,7 @@ public class HeroViewFromAbove extends Pane {
     public void moveX(int value) {
         boolean rightMove = value > 0;
         for (int i = 0; i < Math.abs(value); i++) {
-            for (ObstacleViewFromAbove obstacle : levelController.listOfObstaclesViewFromAbove) {
+            for (ObstacleAbove obstacle : levelController.listOfObstaclesAbove) {
                 if (this.getBoundsInParent().intersects(obstacle.getBoundsInParent())) {
                     if (getTranslateX() + WIDTH >= obstacle.getTranslateX() && rightMove) {
                         setTranslateX(getTranslateX() - 1);
@@ -54,7 +54,7 @@ public class HeroViewFromAbove extends Pane {
     public void moveY(int value){
         boolean forwardMove = value > 0;
         for (int i = 0; i < Math.abs(value); i++) {
-            for (ObstacleViewFromAbove obstacle : levelController.listOfObstaclesViewFromAbove) {
+            for (ObstacleAbove obstacle : levelController.listOfObstaclesAbove) {
                 if (this.getBoundsInParent().intersects(obstacle.getBoundsInParent())) {
                     if (getTranslateY() + HEIGHT == obstacle.getTranslateY() && forwardMove) {
                         setTranslateY(getTranslateY() - 1);

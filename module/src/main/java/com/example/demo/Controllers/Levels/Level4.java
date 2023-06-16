@@ -13,24 +13,21 @@ public class Level4 {
     public Pane gameRoot = new Pane();
     public Pane appRoot = new Pane();
     public Pane extraGameRoot = new Pane();
-    public ImageView imageViewhero = new ImageView(new Image("Images/Sprites/SpriteHero.png"));
-    public ImageView imageViewheroViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteHeroViewFromAbove.png"));
+    public ImageView imageViewHero = new ImageView(new Image("Images/Sprites/SpriteHero.png"));
+    public ImageView imageViewHeroViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteHeroViewFromAbove.png"));
     public ImageView imageViewCoin = new ImageView(new Image("Images/Sprites/SpriteCoin.png"));
     public ImageView imageViewCoinViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteCoinViewFromAbove.png"));
     public List<Obstacle> listOfObstacles = new ArrayList<>();
-    public List<ObstacleViewFromAbove> listOfObstaclesViewFromAbove = new ArrayList<>();
+    public List<ObstacleAbove> listOfObstaclesViewFromAbove = new ArrayList<>();
     public List<Integer> list = new ArrayList<>();
     public List<Integer> listAbove = new ArrayList<>();
     public Integer level = 4;
     public ImageView backgroundSkyImage = new ImageView(new Image("Images/Level4/Night.jpg"));
     public ImageView backgroundGroundImage = new ImageView(new Image("Images/Level4/GroundAboveForNight.png"));
-    public LevelController levelController;
-
-    public Level4() {
-    }
+    public Level4() {}
 
     public void start(Stage stage) {
-        levelController = new LevelController(levelController);
+        LevelController levelController = new LevelController();
         Image wall = new Image("Images/Walls/Wall.jpg");
         Image wallX11H = new Image("Images/Walls/WallX11H.jpg");
         Image wallX3V = new Image("Images/Walls/WallX3V.jpg");
@@ -56,30 +53,30 @@ public class Level4 {
         Image wallX8V = new Image("Images/Walls/WallX8V.jpg");
         Image wallX5H = new Image("Images/Walls/WallX5H.jpg");
         Image wallX3H = new Image("Images/Walls/WallX3H.jpg");
-        ObstacleViewFromAbove obstacleViewFromAbove8 = new ObstacleViewFromAbove(70, 900, longWall);
-        ObstacleViewFromAbove obstacleViewFromAbove9 = new ObstacleViewFromAbove(70, 900, longWall);
-        ObstacleViewFromAbove obstacleViewFromAbove10 = new ObstacleViewFromAbove(70, 900, longWall);
-        ObstacleViewFromAbove obstacleViewFromAbove11 = new ObstacleViewFromAbove(560, 70, wallX8H);
-        ObstacleViewFromAbove obstacleViewFromAbove12 = new ObstacleViewFromAbove(70, 545, wallX8V);
-        ObstacleViewFromAbove obstacleViewFromAbove13 = new ObstacleViewFromAbove(70, 70, wall);
-        ObstacleViewFromAbove obstacleViewFromAbove14 = new ObstacleViewFromAbove(350, 70, wallX5H);
-        ObstacleViewFromAbove obstacleViewFromAbove15 = new ObstacleViewFromAbove(560, 70, wallX8H);
-        ObstacleViewFromAbove obstacleViewFromAbove16 = new ObstacleViewFromAbove(70, 70, wall);
-        ObstacleViewFromAbove obstacleViewFromAbove17 = new ObstacleViewFromAbove(70, 550, wallX8V);
-        ObstacleViewFromAbove obstacleViewFromAbove18 = new ObstacleViewFromAbove(200, 70, wallX3H);
-        ObstacleViewFromAbove obstacleViewFromAbove19 = new ObstacleViewFromAbove(70, 210, wallX3V);
-        ObstacleViewFromAbove obstacleViewFromAbove20 = new ObstacleViewFromAbove(70, 210, wallX3V);
-        ObstacleViewFromAbove obstacleViewFromAbove21 = new ObstacleViewFromAbove(80, 70, wall);
-        ObstacleViewFromAbove obstacleViewFromAbove22 = new ObstacleViewFromAbove(80, 70, wall);
-        ObstacleViewFromAbove obstacleViewFromAbove23 = new ObstacleViewFromAbove(70, 70, wall);
-        ObstacleViewFromAbove obstacleViewFromAbove24 = new ObstacleViewFromAbove(70, 900, longWall);
-        ObstacleViewFromAbove obstacleViewFromAbove25 = new ObstacleViewFromAbove(770, 70, wallX11H);
-        ObstacleViewFromAbove obstacleViewFromAbove26 = new ObstacleViewFromAbove(70, 900, longWall);
-        ObstacleViewFromAbove obstacleViewFromAbove27 = new ObstacleViewFromAbove(70, 900, longWall);
-        ObstacleViewFromAbove obstacleViewFromAbove28 = new ObstacleViewFromAbove(70, 900, longWall);
-        ObstacleViewFromAbove obstacleViewFromAbove29 = new ObstacleViewFromAbove(70, 210, wallX3V);
-        ObstacleViewFromAbove obstacleViewFromAbove30 = new ObstacleViewFromAbove(70, 70, wall);
-        ObstacleViewFromAbove obstacleViewFromAbove31 = new ObstacleViewFromAbove(70, 900, longWall);
+        ObstacleAbove obstacleViewFromAbove8 = new ObstacleAbove(70, 900, longWall);
+        ObstacleAbove obstacleViewFromAbove9 = new ObstacleAbove(70, 900, longWall);
+        ObstacleAbove obstacleViewFromAbove10 = new ObstacleAbove(70, 900, longWall);
+        ObstacleAbove obstacleViewFromAbove11 = new ObstacleAbove(560, 70, wallX8H);
+        ObstacleAbove obstacleViewFromAbove12 = new ObstacleAbove(70, 545, wallX8V);
+        ObstacleAbove obstacleViewFromAbove13 = new ObstacleAbove(70, 70, wall);
+        ObstacleAbove obstacleViewFromAbove14 = new ObstacleAbove(350, 70, wallX5H);
+        ObstacleAbove obstacleViewFromAbove15 = new ObstacleAbove(560, 70, wallX8H);
+        ObstacleAbove obstacleViewFromAbove16 = new ObstacleAbove(70, 70, wall);
+        ObstacleAbove obstacleViewFromAbove17 = new ObstacleAbove(70, 550, wallX8V);
+        ObstacleAbove obstacleViewFromAbove18 = new ObstacleAbove(200, 70, wallX3H);
+        ObstacleAbove obstacleViewFromAbove19 = new ObstacleAbove(70, 210, wallX3V);
+        ObstacleAbove obstacleViewFromAbove20 = new ObstacleAbove(70, 210, wallX3V);
+        ObstacleAbove obstacleViewFromAbove21 = new ObstacleAbove(80, 70, wall);
+        ObstacleAbove obstacleViewFromAbove22 = new ObstacleAbove(80, 70, wall);
+        ObstacleAbove obstacleViewFromAbove23 = new ObstacleAbove(70, 70, wall);
+        ObstacleAbove obstacleViewFromAbove24 = new ObstacleAbove(70, 900, longWall);
+        ObstacleAbove obstacleViewFromAbove25 = new ObstacleAbove(770, 70, wallX11H);
+        ObstacleAbove obstacleViewFromAbove26 = new ObstacleAbove(70, 900, longWall);
+        ObstacleAbove obstacleViewFromAbove27 = new ObstacleAbove(70, 900, longWall);
+        ObstacleAbove obstacleViewFromAbove28 = new ObstacleAbove(70, 900, longWall);
+        ObstacleAbove obstacleViewFromAbove29 = new ObstacleAbove(70, 210, wallX3V);
+        ObstacleAbove obstacleViewFromAbove30 = new ObstacleAbove(70, 70, wall);
+        ObstacleAbove obstacleViewFromAbove31 = new ObstacleAbove(70, 900, longWall);
         obstacle.setTranslateY(630);
         obstacle3.setTranslateX(70);
         obstacle3.setTranslateY(560);
@@ -199,10 +196,10 @@ public class Level4 {
         listOfObstacles.forEach(e -> list.add((int) e.getTranslateX()));
         listOfObstaclesViewFromAbove.forEach(e -> listAbove.add((int) e.getTranslateX()));
 
-        levelController.hero = new Hero(levelController, imageViewhero);
-        levelController.heroViewFromAbove = new HeroViewFromAbove(levelController, imageViewheroViewFromAbove);
+        levelController.hero = new Hero(levelController, imageViewHero);
+        levelController.heroAbove = new HeroAbove(levelController, imageViewHeroViewFromAbove);
         levelController.coin = new Coin(levelController, imageViewCoin);
-        levelController.coinViewFromAbove = new CoinViewFromAbove(levelController, imageViewCoinViewFromAbove);
+        levelController.coinAbove = new CoinAbove(levelController, imageViewCoinViewFromAbove);
         levelController.gameRoot = gameRoot;
         levelController.appRoot = appRoot;
         levelController.extraGameRoot = extraGameRoot;
@@ -211,11 +208,11 @@ public class Level4 {
         levelController.backgroundSkyImage = backgroundSkyImage;
         levelController.list = list;
         levelController.listOfObstacles = listOfObstacles;
-        levelController.listOfObstaclesViewFromAbove = listOfObstaclesViewFromAbove;
+        levelController.listOfObstaclesAbove = listOfObstaclesViewFromAbove;
         levelController.hero.setTranslateX(10);
         levelController.hero.setTranslateY(550);
-        levelController.heroViewFromAbove.setTranslateX(10);
-        levelController.heroViewFromAbove.setTranslateY(700);
+        levelController.heroAbove.setTranslateX(10);
+        levelController.heroAbove.setTranslateY(700);
         levelController.start(stage);
         stage.setFullScreen(true);
     }

@@ -6,14 +6,14 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-public class SpriteAnimationCoinViewFromAbove extends Transition {
+public class SpriteAnimationCoinAbove extends Transition {
     public ImageView imageView;
     public int columns;
     public int offsetX;
     public int width;
     public int height;
 
-    public SpriteAnimationCoinViewFromAbove(
+    public SpriteAnimationCoinAbove(
             ImageView imageView, Duration duration,
             int columns, int offsetX,
             int width, int height) {

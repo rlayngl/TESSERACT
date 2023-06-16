@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
@@ -18,8 +17,5 @@ public class Application extends javafx.application.Application {
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.show();
     }
-
-    public static void main(String[] args) {
-        launch();
-    }
+    public static void main(String[] args) { launch(); }
 }
