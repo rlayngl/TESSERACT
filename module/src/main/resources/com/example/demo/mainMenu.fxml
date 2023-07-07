@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?language javascript?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="500.0" minWidth="700.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #708090;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controllers.Controller">
+<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="500.0" minWidth="700.0" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #708090;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controllers.Controller">
    <AnchorPane prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <VBox alignment="CENTER" layoutX="50.0" layoutY="7.0" prefHeight="694.0" prefWidth="1820.0" AnchorPane.bottomAnchor="379.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="7.0">
          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="58.0" text="THE" VBox.vgrow="ALWAYS">
@@ -77,12 +80,12 @@
             <Font name="Leelawadee UI" size="44.0" />
          </font>
       </Label>
-      <Button id="StartButton" fx:id="Level1Button" layoutX="47.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel1" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="1">
+      <Button id="StartButton" fx:id="Level1Button" disable="true" layoutX="47.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel1" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="1">
          <font>
             <Font name="Calibri Bold" size="37.0" />
          </font>
       </Button>
-      <Button id="StartButton" fx:id="Level4Button" layoutX="47.0" layoutY="470.0" mnemonicParsing="false" onAction="#PlayLevel4" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="4">
+      <Button id="StartButton" fx:id="Level4Button" disable="true" layoutX="47.0" layoutY="470.0" mnemonicParsing="false" onAction="#PlayLevel4" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="4">
          <font>
             <Font name="Calibri Bold" size="37.0" />
          </font>
@@ -92,12 +95,12 @@
             <Font name="Impact" size="34.0" />
          </font>
       </Button>
-      <Button id="StartButton" fx:id="Level2Button" layoutX="143.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel2" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="2">
+      <Button id="StartButton" fx:id="Level2Button" disable="true" layoutX="143.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel2" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="2">
          <font>
             <Font name="Calibri Bold" size="37.0" />
          </font>
       </Button>
-      <Button id="StartButton" fx:id="Level3Button" layoutX="236.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel3" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="3">
+      <Button id="StartButton" fx:id="Level3Button" disable="true" layoutX="236.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel3" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="3">
          <font>
             <Font name="Calibri Bold" size="37.0" />
          </font>
@@ -212,12 +215,10 @@
       </Button>
    </AnchorPane>
    <AnchorPane fx:id="HallOfFamePane" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #708090;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <VBox alignment="CENTER" layoutX="469.0" layoutY="87.0" prefHeight="194.0" prefWidth="1003.0"
-            AnchorPane.bottomAnchor="799.0" AnchorPane.leftAnchor="469.0" AnchorPane.rightAnchor="448.0"
-            AnchorPane.topAnchor="87.0">
+      <VBox alignment="CENTER" layoutX="469.0" layoutY="87.0" prefHeight="194.0" prefWidth="1003.0" AnchorPane.bottomAnchor="799.0" AnchorPane.leftAnchor="469.0" AnchorPane.rightAnchor="448.0" AnchorPane.topAnchor="87.0">
          <Label prefHeight="99.0" prefWidth="470.0" text="RECORDS">
             <font>
-               <Font name="Gill Sans Ultra Bold" size="79.0"/>
+               <Font name="Gill Sans Ultra Bold" size="79.0" />
             </font>
          </Label>
       </VBox>
@@ -297,5 +298,59 @@
             </Button>
          </HBox>
       </VBox>
+   </AnchorPane>
+   <AnchorPane fx:id="PlayPane1" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #708090;" visible="false">
+      <children>
+         <Label alignment="CENTER" layoutX="483.0" layoutY="13.0" prefHeight="147.0" prefWidth="518.0" text="LEVELS">
+            <font>
+               <Font name="Gill Sans Ultra Bold" size="79.0" />
+            </font>
+         </Label>
+         <Button id="StartButton" fx:id="Level0Button1" layoutX="50.0" layoutY="187.0" mnemonicParsing="false" onAction="#PlayLevel0" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="0">
+            <font>
+               <Font name="Calibri Bold" size="37.0" />
+            </font>
+         </Button>
+         <Label layoutX="50.0" layoutY="128.0" text="Training level">
+            <font>
+               <Font name="Leelawadee UI" size="44.0" />
+            </font>
+         </Label>
+         <Label layoutX="50.0" layoutY="261.0" text="Amateur levels">
+            <font>
+               <Font name="Leelawadee UI" size="44.0" />
+            </font>
+         </Label>
+         <Label layoutX="50.0" layoutY="404.0" text="Pro levels">
+            <font>
+               <Font name="Leelawadee UI" size="44.0" />
+            </font>
+         </Label>
+         <Button id="StartButton" fx:id="Level1Button1" disable="true" layoutX="47.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel1" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="1">
+            <font>
+               <Font name="Calibri Bold" size="37.0" />
+            </font>
+         </Button>
+         <Button id="StartButton" fx:id="Level4Button1" disable="true" layoutX="47.0" layoutY="470.0" mnemonicParsing="false" onAction="#PlayLevel4" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="4">
+            <font>
+               <Font name="Calibri Bold" size="37.0" />
+            </font>
+         </Button>
+         <Button id="BackButton" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#BackPlay" prefHeight="66.0" prefWidth="64.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: #708090;               -fx-border-color: #696969; -fx-border-width: 3;" text="&lt;" textFill="#534e4e">
+            <font>
+               <Font name="Impact" size="34.0" />
+            </font>
+         </Button>
+         <Button id="StartButton" fx:id="Level2Button1" disable="true" layoutX="143.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel2" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="2">
+            <font>
+               <Font name="Calibri Bold" size="37.0" />
+            </font>
+         </Button>
+         <Button id="StartButton" fx:id="Level3Button1" disable="true" layoutX="236.0" layoutY="327.0" mnemonicParsing="false" onAction="#PlayLevel3" prefHeight="72.0" prefWidth="72.0" style="-fx-background-color: #708090; -fx-border-color: #696969; -fx-border-radius: 20;               -fx-background-radius: 20; -fx-border-width: 3;" text="3">
+            <font>
+               <Font name="Calibri Bold" size="37.0" />
+            </font>
+         </Button>
+      </children>
    </AnchorPane>
 </AnchorPane>

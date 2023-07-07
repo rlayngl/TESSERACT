@@ -14,9 +14,9 @@ public class Level2 {
     public Pane appRoot = new Pane();
     public Pane extraGameRoot = new Pane();
     public ImageView imageViewHero = new ImageView(new Image("Images/Sprites/SpriteHero.png"));
-    public ImageView imageViewHeroViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteHeroViewFromAbove.png"));
+    public ImageView imageViewHeroViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteHeroAbove.png"));
     public ImageView imageViewCoin = new ImageView(new Image("Images/Sprites/SpriteCoin.png"));
-    public ImageView imageViewCoinViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteCoinViewFromAbove.png"));
+    public ImageView imageViewCoinViewFromAbove = new ImageView(new Image("Images/Sprites/SpriteCoinAbove.png"));
     public List<Obstacle> listOfObstacles = new ArrayList<>();
     public List<ObstacleAbove> listOfObstaclesViewFromAbove = new ArrayList<>();
     public List<Integer> list = new ArrayList<>();

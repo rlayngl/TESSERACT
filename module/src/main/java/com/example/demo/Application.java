@@ -11,7 +11,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("mainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("TESSERACT");
+        stage.setTitle("The TESSERACT");
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.getIcons().add(new Image("Images/Icon.png"));

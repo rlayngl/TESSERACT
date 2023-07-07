@@ -48,8 +48,9 @@ public class Controller {
     @FXML
     private Label Record4;
     @FXML
-    protected void Play() {
+    protected void Play() throws IOException {
         PlayPane.setVisible(true);
+        open();
     }
     @FXML
     protected void Settings() {
@@ -64,7 +65,7 @@ public class Controller {
         HallOfFamePane.setVisible(true);
         List<String> list = new ArrayList<>();
         BufferedReader reader = new BufferedReader(
-                new FileReader("module/src/main/resources/completedLevels.txt"));
+                new FileReader("C:\\Users\\sanch\\IdeaProjects\\The TESSERACT\\module\\src\\main\\resources\\completedLevelsResults.txt"));
         String just;
         while ((just = reader.readLine()) != null) list.add(just);
         int count = 0;
@@ -80,6 +81,7 @@ public class Controller {
             }
             count++;
         }
+        reader.close();
     }
     @FXML
     protected void Quit() {
@@ -118,7 +120,7 @@ public class Controller {
     protected void PlayLevel0() {
         Level0Button.getScene().getWindow().hide();
         Stage stage = new Stage();
-        stage.setTitle("TESSERACT");
+        stage.setTitle("The TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
         level0 = new Level0();
@@ -128,7 +130,7 @@ public class Controller {
     protected void PlayLevel1() {
         Level1Button.getScene().getWindow().hide();
         Stage stage = new Stage();
-        stage.setTitle("TESSERACT");
+        stage.setTitle("The TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
         level1 = new Level1();
@@ -138,7 +140,7 @@ public class Controller {
     protected void PlayLevel2() {
         Level2Button.getScene().getWindow().hide();
         Stage stage = new Stage();
-        stage.setTitle("TESSERACT");
+        stage.setTitle("The TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
         level2 = new Level2();
@@ -148,7 +150,7 @@ public class Controller {
     protected void PlayLevel3() {
         Level3Button.getScene().getWindow().hide();
         Stage stage = new Stage();
-        stage.setTitle("TESSERACT");
+        stage.setTitle("The TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
         level3 = new Level3();
@@ -158,17 +160,35 @@ public class Controller {
     protected void PlayLevel4() {
         Level4Button.getScene().getWindow().hide();
         Stage stage = new Stage();
-        stage.setTitle("TESSERACT");
+        stage.setTitle("The TESSERACT");
         stage.getIcons().add(new Image("Images/Icon.png"));
         stage.setFullScreen(true);
         stage.show();
         level4 = new Level4();
         level4.start(stage);
     }
-    protected String watch(Integer time) {
+    private String watch(Integer time) {
         int minutes = time / 60;
         int seconds = time % 60;
         DecimalFormat decimalFormat = new DecimalFormat("00");
         return decimalFormat.format(minutes) + ":" + decimalFormat.format(seconds);
+    }
+    private void open() throws IOException {
+        List<String> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(
+                new FileReader("C:\\Users\\sanch\\IdeaProjects\\The TESSERACT\\module\\src\\main\\resources\\completedLevels.txt"));
+        String element;
+        while ((element = reader.readLine()) != null) list.add(element);
+        int count = 0;
+        for (String string : list) {
+            if (string.equals("1")) {
+                if (count == 0) Level1Button.setDisable(false);
+                if (count == 1) Level2Button.setDisable(false);
+                if (count == 2) Level3Button.setDisable(false);
+                if (count == 3) Level4Button.setDisable(false);
+            }
+            count++;
+        }
+        reader.close();
     }
 }

@@ -409,6 +409,7 @@ public class LevelController {
         timer.stop();
         stopTimer();
         record();
+        open();
         Button buttonRestart = createButton("RESTART");
         Button buttonNextLevel = createButton("NEXT LEVEL");
         Button buttonMenu = createButton("MENU");
@@ -418,6 +419,11 @@ public class LevelController {
         label.setFont(font);
         VBox vBox = new VBox(20);
         vBox.setAlignment(Pos.CENTER);
+//        Label newRecord = new Label("NEW RECORD!!!");
+//        newRecord.setTextFill(Color.GRAY);
+//        Font fontForNewRecord = Font.font("Gill Sans MT", 30);
+//        newRecord.setFont(fontForNewRecord);
+//        if (wasListChanged) vBox.getChildren().add(newRecord);
         if (currentLevel != 4) {
             vBox.getChildren().addAll(label, buttonNextLevel, buttonRestart, buttonMenu);
             vBox.setLayoutY(190);
@@ -539,7 +545,7 @@ public class LevelController {
         gameRoot.getChildren().clear();
         extraGameRoot.getChildren().clear();
         Stage stage = new Stage();
-        stage.setTitle("TESSERACT");
+        stage.setTitle("The TESSERACT");
         stage.setFullScreen(true);
         stage.getIcons().add(new Image("Images/Icon.png"));
         isDimensionChanged = false;
@@ -654,25 +660,56 @@ public class LevelController {
         timerLabel.setTranslateX(20);
         timerLabel.setTranslateY(20);
     }
+    private boolean wasListChanged = false;
+    private boolean wasOtherListChanged = false;
     public void record() throws IOException {
-        boolean wasListChanged = false;
         List<String> list = new ArrayList<>();
         BufferedReader reader = new BufferedReader(
-                new FileReader("module/src/main/resources/completedLevels.txt"));
+                new FileReader("C:\\Users\\sanch\\IdeaProjects\\The TESSERACT\\module\\src\\main\\resources\\completedLevelsResults.txt"));
         String just;
         while ((just = reader.readLine()) != null) list.add(just);
+        int countOfLines = 0;
         for (String line : list) {
             int number = Integer.parseInt(line);
-            if (list.indexOf(line) == currentLevel && (number == 0 || secondsPassed < number)) {
+            if (countOfLines == currentLevel && (number == 0 || secondsPassed < number)) {
                 list.set(currentLevel, Integer.toString(secondsPassed));
                 wasListChanged = true;
             }
+            countOfLines++;
         }
         if (wasListChanged) {
             int count = 1;
             int size = list.size();
             BufferedWriter writer = new BufferedWriter(
-                    new FileWriter("module/src/main/resources/completedLevels.txt"));
+                    new FileWriter("C:\\Users\\sanch\\IdeaProjects\\The TESSERACT\\module\\src\\main\\resources\\completedLevelsResults.txt"));
+            for (String line : list) {
+                writer.write(line);
+                if (count != size) writer.write("\n");
+                count++;
+            }
+            writer.close();
+        }
+        reader.close();
+    }
+    public void open() throws IOException {
+        List<String> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(
+                new FileReader("C:\\Users\\sanch\\IdeaProjects\\The TESSERACT\\module\\src\\main\\resources\\completedLevels.txt"));
+        String just;
+        while ((just = reader.readLine()) != null) list.add(just);
+        int countOfLines = 0;
+        for (String ignored : list) {
+            if (countOfLines == currentLevel) {
+                list.set(currentLevel, "1");
+                wasOtherListChanged = true;
+            }
+            countOfLines++;
+        }
+        if (wasOtherListChanged) {
+            int count = 1;
+            int size = list.size();
+            BufferedWriter writer = new BufferedWriter(
+                    new FileWriter("C:\\Users\\sanch\\IdeaProjects\\The TESSERACT\\module\\src\\main\\resources\\completedLevels.txt"));
             for (String line : list) {
                 writer.write(line);
                 if (count != size) writer.write("\n");
