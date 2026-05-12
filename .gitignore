@@ -1,18 +1,47 @@
-.gradle
-.idea
-/build/
-/target/
+### Java & Gradle ###
+# Ignore Gradle build output and cache
+.gradle/
+build/
+out/
+bin/
+*.class
 
 # Ignore Gradle GUI config
 gradle-app.setting
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-# Cache of project
 .gradletasknamecache
 
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
+# Gradle Wrapper - keep these to allow others to build the project
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 
+### IntelliJ IDEA ###
+# Ignore IDEA project files
+.idea/
 *.iml
+*.iws
+*.ipr
+out/
+
+### Build Artifacts ###
+# Ignore generated JARs and EXE files (use GitHub Releases for these)
+*.jar
+*.exe
+dist/
+artifacts/
+
+### Operating System ###
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### Other IDEs ###
+# Compatibility with VS Code, Eclipse, and NetBeans
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+nbproject/
+nbbuild/
+nbdist/
